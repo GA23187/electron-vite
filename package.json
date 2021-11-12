@@ -1,0 +1,50 @@
+{
+  "name": "electron",
+  "version": "0.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "vite --port 8050",
+    "build": "vite build",
+    "serve": "vite preview",
+    "electron": "wait-on tcp:8050 && cross-env NODE_ENV=development electron .",
+    "electron:serve": "concurrently -k \"yarn dev\" \"yarn electron\"",
+    "electron:build": "vite build && electron-builder",
+    "build-icon": "electron-icon-builder --input=./public/logo.png --output=build --flatten"
+  },
+  "dependencies": {
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.9.3",
+    "concurrently": "^6.3.0",
+    "cross-env": "^7.0.3",
+    "electron": "^15.3.0",
+    "electron-builder": "^22.13.1",
+    "electron-icon-builder": "^2.0.1",
+    "vite": "^2.6.4",
+    "wait-on": "^6.0.0"
+  },
+  "build": {
+    "appId": "com.pc",
+    "productName": "",
+    "copyright": "Copyright",
+    "win": {
+      "icon": "public/256x256.png"
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    }
+  }
+}
