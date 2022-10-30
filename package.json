@@ -12,6 +12,7 @@
     "build-icon": "electron-icon-builder --input=./public/logo.png --output=build --flatten"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "vue": "^3.2.16"
   },
   "devDependencies": {

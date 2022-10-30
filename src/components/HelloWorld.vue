@@ -1,6 +1,9 @@
 <script setup>
 import { ref } from 'vue'
+import getAjax from '@/api/index.js'
 
+console.log(getAjax,'getAjax')
+getAjax('123')
 defineProps({
   msg: String
 })
